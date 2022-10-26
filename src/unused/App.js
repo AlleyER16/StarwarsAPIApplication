@@ -2,7 +2,7 @@ import { Component, createRef } from "react";
 
 import "./App.css";
 
-import starWarsImg from "./assets/star-wars-logo.png";
+import starWarsImg from "../assets/star-wars-logo.png";
 
 class App extends Component {
   state = {
@@ -154,12 +154,26 @@ class App extends Component {
         </div>
         {this.state.selectedFilm ? (
           <section className="main-section" ref={this.mainSectionRef}>
-            <div className="film-opening-crawl">
-              <p>{this.state.selectedFilm.opening_crawl}</p>
+            <div className="film-info">
+              <h3 className="film-title">{this.state.selectedFilm.title}</h3>
+              <p className="film-opening-crawl">
+                {this.state.selectedFilm.opening_crawl}
+              </p>
+              <ul className="film-extra">
+                <li className="film-extra-item">
+                  <span>Director:</span> {this.state.selectedFilm.director}
+                </li>
+                <li className="film-extra-item">
+                  <span>Producer:</span> {this.state.selectedFilm.producer}
+                </li>
+                <li className="film-extra-item">
+                  <span>Release Date:</span>{" "}
+                  {this.state.selectedFilm.release_date}
+                </li>
+              </ul>
             </div>
             <div className="film-characters">
-              <div className="film-characters-header">
-                <h3 className="film-title">{this.state.selectedFilm.title}</h3>
+              <div className="filter">
                 <select
                   className="gender-select"
                   value={this.state.gender}
